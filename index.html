@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeon Loot Splitter</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Dungeon Loot Splitter</h1>
+</header>
+
+<main>
+
+    <!-- Montaje de la fiesta -->
+    <section class="panel">
+        <h2>Montaje de la fiesta</h2>
+
+        <label for="groupSizeInput">Número de miembros del grupo</label>
+        <input type="number" id="groupSizeInput" min="1">
+
+        <p id="errorMessage" class="error"></p>
+    </section>
+
+    <!-- Añadir botín -->
+    <section class="panel">
+        <h2>Añadir botín</h2>
+
+        <label for="lootNameInput">Nombre del botín:</label>
+        <input type="text" id="lootNameInput">
+
+        <label for="lootValueInput">Valor de botín:</label>
+        <input type="number" id="lootValueInput" step="0.01">
+
+        <button id="addLootBtn">Añadir botín</button>
+    </section>
+
+    <!-- Lista de botín -->
+    <section class="panel">
+        <h2>Lista de botín</h2>
+
+        <ul id="lootList"></ul>
+
+        <p>Botín total: <span id="lootTotal">0.00</span></p>
+    </section>
+
+    <!-- Botín dividido -->
+    <section class="panel">
+        <h2>Botín dividido</h2>
+
+        <button id="splitBtn">Dividir botín</button>
+
+        <p>Botín total: <span id="splitTotal">0.00</span></p>
+        <p>Botín por miembro del grupo: <span id="splitPerMember">0.00</span></p>
+    </section>
+
+    <!-- Explicación de la lógica -->
+    <section class="panel reflection">
+        <h2>Explicación de la lógica</h2>
+
+        <p>
+            Aquí escribirás tu explicación sobre cómo funciona tu array,
+            dónde usas bucles y dónde ocurre la lógica condicional.
+            El array almacena objetos de botín con nombre y valor.  
+            Uso un bucle para calcular el total y otro para renderizar la lista.  
+            La lógica condicional valida entradas y evita errores como valores
+             vacíos o negativos.
+        </p>
+    </section>
+
+</main>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>

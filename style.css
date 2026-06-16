@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 1rem;
+    background: #f4f4f4;
+    color: #222;
+}
+
+header {
+    text-align: center;
+    padding: 1.5rem 0;
+    background: #393E46;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.panel {
+    background: #FFFFFF;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 3px solid #393E46;
+    box-shadow: 10px 10px 25px #999;
+}
+
+.panel h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+label {
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+    border-radius: 8px;
+    border: 2px solid #888;
+    font-size: 1rem;
+}
+
+button {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 10px;
+    border: 3px solid #393E46;
+    background: #EEEEEE;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+    box-shadow: 8px 8px 20px #aaa;
+}
+
+button:hover {
+    background: #393E46;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* =========================================================
+   LISTA DE BOTÍN
+========================================================= */
+#lootList {
+    padding-left: 1rem;
+}
+
+#lootList li {
+    margin-bottom: 0.4rem;
+}
+
+/* =========================================================
+   ERRORES
+========================================================= */
+.error {
+    color: #B00020;
+    font-weight: bold;
+    margin-top: 0.8rem;
+}
+
+/* =========================================================
+   PANEL DE REFLEXIÓN
+========================================================= */
+.reflection {
+    background: #E8F0FE;
+    border-color: #3A6EA5;
+}
+ /* =========================================================
+   DESKTOP LAYOUT
+========================================================= */
+@media (min-width: 768px) {
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .reflection {
+        grid-column: span 2;
+    }
+
+    header h1 {
+        font-size: 2.4rem;
+    }
+}
