@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,6 +28,37 @@
     <section class="panel">
         <h2>Añadir botín</h2>
 
+        <!-- Selector de botín predefinido -->
+        <label for="presetLoot">Botín rápido:</label>
+        <select id="presetLoot">
+            <option value="">-- Selecciona botín --</option>
+
+            <!-- Bolsas de oro -->
+            <option value="Bolsa de oro pequeña|10">Bolsa de oro pequeña ($10)</option>
+            <option value="Bolsa de oro mediana|25">Bolsa de oro mediana ($25)</option>
+            <option value="Bolsa de oro grande|50">Bolsa de oro grande ($50)</option>
+
+            <!-- Gemas pequeñas -->
+            <option value="Gema pequeña roja|15">Gema pequeña roja ($15)</option>
+            <option value="Gema pequeña azul|15">Gema pequeña azul ($15)</option>
+            <option value="Gema pequeña verde|15">Gema pequeña verde ($15)</option>
+
+            <!-- Gemas medianas -->
+            <option value="Gema mediana roja|40">Gema mediana roja ($40)</option>
+            <option value="Gema mediana azul|40">Gema mediana azul ($40)</option>
+            <option value="Gema mediana verde|40">Gema mediana verde ($40)</option>
+
+            <!-- Gemas grandes -->
+            <option value="Gema grande roja|100">Gema grande roja ($100)</option>
+            <option value="Gema grande azul|100">Gema grande azul ($100)</option>
+            <option value="Gema grande verde|100">Gema grande verde ($100)</option>
+        </select>
+
+        <p style="font-size: 0.9rem; margin-top: 4px;">
+            (Seleccionar un botín llenará automáticamente los campos de abajo)
+        </p>
+
+        <!-- Entradas manuales -->
         <label for="lootNameInput">Nombre del botín:</label>
         <input type="text" id="lootNameInput">
 
@@ -60,13 +91,9 @@
     <section class="panel reflection">
         <h2>Explicación de la lógica</h2>
 
-        <p>
-            Aquí escribirás tu explicación sobre cómo funciona tu array,
-            dónde usas bucles y dónde ocurre la lógica condicional.
-            El array almacena objetos de botín con nombre y valor.  
-            Uso un bucle para calcular el total y otro para renderizar la lista.  
-            La lógica condicional valida entradas y evita errores como valores
-             vacíos o negativos.
+        <p>  
+            Uso un bucle para calcular el total y otro para renderizar la lista de botín
+             y evita errores como valores vacíos o negativos.
         </p>
     </section>
 

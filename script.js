@@ -1,14 +1,10 @@
-//  ARRAY GLOBAL PARA GUARDAR EL BOTÍN
-let lootArray = []; // Cada elemento será { name: "...", value: número }
-
+let lootArray = [];
 
 //  ACCESO AL DOM (solo getElementById)
 const groupSizeInput = document.getElementById("groupSizeInput");
 const lootNameInput = document.getElementById("lootNameInput");
 const lootValueInput = document.getElementById("lootValueInput");
-
-const addLootBtn = document.getElementById("addLootBtn");
-const splitBtn = document.getElementById("splitBtn");
+const presetLoot = document.getElementById("presetLoot");
 
 const lootList = document.getElementById("lootList");
 const lootTotalSpan = document.getElementById("lootTotal");
@@ -18,26 +14,40 @@ const splitPerMemberSpan = document.getElementById("splitPerMember");
 
 const errorMessage = document.getElementById("errorMessage");
 
+const addLootBtn = document.getElementById("addLootBtn");
+const splitBtn = document.getElementById("splitBtn");
 
-//  EVENT LISTENERS
+
+presetLoot.addEventListener("change", () => {
+    if (presetLoot.value === "") return;
+
+    const [name, value] = presetLoot.value.split("|");
+    lootNameInput.value = name;
+    lootValueInput.value = Number(value);
+});
+
+// Botón Añadir botín
 addLootBtn.addEventListener("click", addLoot);
+
+// Botón Dividir botín
 splitBtn.addEventListener("click", splitLoot);
+
 
 //  FUNCIÓN: AÑADIR BOTÍN
 function addLoot() {
-    errorMessage.textContent = ""; // limpiar errores
+    errorMessage.textContent = "";
 
     const name = lootNameInput.value.trim();
     const value = parseFloat(lootValueInput.value);
 
-    // VALIDACIONES
+    // Validaciones
     if (name === "") {
         errorMessage.textContent = "El nombre del botín no puede estar vacío.";
         return;
     }
 
     if (isNaN(value)) {
-        errorMessage.textContent = "El valor del botín debe ser un número válido.";
+        errorMessage.textContent = "El valor del botín debe ser un número.";
         return;
     }
 
@@ -52,25 +62,26 @@ function addLoot() {
         value: value
     };
 
-    // Guardarlo en el array global
+    // Guardar en el array
     lootArray.push(lootObject);
 
-    // Renderizar lista y total
+    // Renderizar lista
     renderLoot();
 
-    // Limpiar inputs
+    // Limpiar campos
     lootNameInput.value = "";
     lootValueInput.value = "";
+    presetLoot.value = "";
 }
 
 
-//  FUNCIÓN: RENDERIZAR LISTA DE BOTÍN
+//  FUNCIÓN: RENDERIZAR BOTÍN
 function renderLoot() {
-    lootList.innerHTML = ""; // limpiar lista
+    lootList.innerHTML = "";
 
     let total = 0;
 
-    // BUCLE OBLIGATORIO (for tradicional)
+    // Bucle tradicional requerido
     for (let i = 0; i < lootArray.length; i++) {
         const item = lootArray[i];
 
@@ -83,13 +94,14 @@ function renderLoot() {
         total += item.value;
     }
 
-    // Mostrar total acumulado
+      // Mostrar total acumulado
     lootTotalSpan.textContent = total.toFixed(2);
 }
 
+
 //  FUNCIÓN: DIVIDIR BOTÍN
 function splitLoot() {
-    errorMessage.textContent = ""; // limpiar errores
+    errorMessage.textContent = "";
 
     const groupSize = parseInt(groupSizeInput.value);
 
@@ -104,7 +116,7 @@ function splitLoot() {
         return;
     }
 
-    // Calcular total usando un bucle
+    // Calcular total
     let total = 0;
     for (let i = 0; i < lootArray.length; i++) {
         total += lootArray[i].value;
