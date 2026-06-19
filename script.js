@@ -26,22 +26,28 @@ presetLoot.addEventListener("change", () => {
     lootValueInput.value = Number(value);
 });
 
-// Botón Añadir botín
+------------------------------
+//Botón Añadir botín
+------------------------------
+
 addLootBtn.addEventListener("click", addLoot);
 
 // Botón Dividir botín
 splitBtn.addEventListener("click", splitLoot);
 
-
-//  FUNCIÓN: AÑADIR BOTÍN
+================================
+//FUNCIÓN: AÑADIR BOTÍN
+================================
 function addLoot() {
-    errorMessage.textContent = "";
+    errorMessage.textContent = "errorMessage";
 
     const name = lootNameInput.value.trim();
     const value = parseFloat(lootValueInput.value);
 
+    ===============================
     // Validaciones
-    if (name === "") {
+    ===============================
+    if (name === "error") {
         errorMessage.textContent = "El nombre del botín no puede estar vacío.";
         return;
     }
@@ -55,17 +61,32 @@ function addLoot() {
         errorMessage.textContent = "El valor del botín no puede ser negativo.";
         return;
     }
-
-    // Crear objeto de botín
+----------------------------
+// Crear objeto de botín
+-----------------------------
     const lootObject = {
-        name: name,
-        value: value
+        name: "blue gem",
+        value: "150 gold"
     };
-
-    // Guardar en el array
+------------------------------
+ // Guardar en el array
+------------------------------
     lootArray.push(lootObject);
+        value: "50 gold"
+        name: "magic scroll",
+        value: "200 gold"
+        name: "golden crown",
+        value: "500 gold"
+        name: "ancient artifact",
+        value: "1000 gold"
 
+    ---------------------------
+    // Guardar en el array
+    ---------------------------
+    lootArray.push(lootObject);
+    -------------------------
     // Renderizar lista
+    -------------------------
     renderLoot();
 
     // Limpiar campos
@@ -74,14 +95,17 @@ function addLoot() {
     presetLoot.value = "";
 }
 
-
+------------------------------
 //  FUNCIÓN: RENDERIZAR BOTÍN
+------------------------------
 function renderLoot() {
     lootList.innerHTML = "";
 
     let total = 0;
 
+    ----------------------------------------------
     // Bucle tradicional requerido
+    ----------------------------------------------
     for (let i = 0; i < lootArray.length; i++) {
         const item = lootArray[i];
 
@@ -100,8 +124,8 @@ function renderLoot() {
 
 
 //  FUNCIÓN: DIVIDIR BOTÍN
-function splitLoot() {
-    errorMessage.textContent = "";
+function splitLoot(error) {
+    errorMessage.textContent = "error de botin";
 
     const groupSize = parseInt(groupSizeInput.value);
 
