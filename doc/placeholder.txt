@@ -1,0 +1,3 @@
+<!--para este proyecto use ia para contruir un esqueleto basico para tener una base
+este programa,
+luego comence a modificarlo a mano-->

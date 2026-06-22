@@ -1,52 +1,67 @@
 let lootArray = [];
+let groupSize = 0;
 
-//  ACCESO AL DOM (solo getElementById)
+//  ACCESO AL DOM
 const groupSizeInput = document.getElementById("groupSizeInput");
 const lootNameInput = document.getElementById("lootNameInput");
 const lootValueInput = document.getElementById("lootValueInput");
+
 const presetLoot = document.getElementById("presetLoot");
+const lootquantityInput = document.getElementById("lootQuantityInput");
+const lootrows = document.getElementById("lootRows");
 
-const lootList = document.getElementById("lootList");
-const lootTotalSpan = document.getElementById("lootTotal");
-
+const TotalLootSpan = document.getElementById("TotalLoot");
 const splitTotalSpan = document.getElementById("splitTotal");
 const splitPerMemberSpan = document.getElementById("splitPerMember");
 
 const errorMessage = document.getElementById("errorMessage");
-
 const addLootBtn = document.getElementById("addLootBtn");
 const splitBtn = document.getElementById("splitBtn");
 
 
-presetLoot.addEventListener("change", () => {
-    if (presetLoot.value === "") return;
+groupSizeInput.addEventListener("input", function () {
+    let value = Number(groupSizeInput.value);
 
-    const [name, value] = presetLoot.value.split("|");
-    lootNameInput.value = name;
-    lootValueInput.value = Number(value);
+    if (value >= 1) {
+        groupSize = value;
+        errorMessage.innerText = "";
+    } else {
+        groupSize = 0;
+        errorMessage.innerText = "El tamaño del grupo debe ser 1 o mayor.";
+    }
+    updateUI();
 });
 
-------------------------------
-//Botón Añadir botín
-------------------------------
-
+presetLoot.addEventListener("change", function () {
+if (presentLoot.value !== ""){
+    let parts = presetLoot.value.split
+    lootNameInput.value = 0;
+    lootValueInput.value = 1;
+    lootquantityInput.value = 1;
+}
+});
 addLootBtn.addEventListener("click", addLoot);
+splitBtn.addEventListener("click", updateUI);
+
+//  EVENTOS DE BOTONES de añadir botín y dividir botín
+
+// Botón Añadir botín
+function addLoot (_){
+    let name = lootNameInput.value.trim();
+    let value = number(lootValueInput.value);
+    let quantity = number(lootquantityInput.value);
+}
 
 // Botón Dividir botín
 splitBtn.addEventListener("click", splitLoot);
 
-================================
-//FUNCIÓN: AÑADIR BOTÍN
-================================
 function addLoot() {
     errorMessage.textContent = "errorMessage";
-
+    else {algo fallo en el mensaje, revise y vuelvalo a intentar} 
     const name = lootNameInput.value.trim();
     const value = parseFloat(lootValueInput.value);
+    const quantity = parseInt(lootquantityInput.value);
 
-    ===============================
-    // Validaciones
-    ===============================
     if (name === "error") {
         errorMessage.textContent = "El nombre del botín no puede estar vacío.";
         return;
@@ -61,16 +76,14 @@ function addLoot() {
         errorMessage.textContent = "El valor del botín no puede ser negativo.";
         return;
     }
-----------------------------
+
 // Crear objeto de botín
------------------------------
     const lootObject = {
-        name: "blue gem",
-        value: "150 gold"
+        name: name,
+        value: value
     };
-------------------------------
+
  // Guardar en el array
-------------------------------
     lootArray.push(lootObject);
         value: "50 gold"
         name: "magic scroll",
@@ -80,13 +93,12 @@ function addLoot() {
         name: "ancient artifact",
         value: "1000 gold"
 
-    ---------------------------
-    // Guardar en el array
-    ---------------------------
+
+ // Guardar en el array
     lootArray.push(lootObject);
-    -------------------------
-    // Renderizar lista
-    -------------------------
+
+
+// Renderizar lista y total
     renderLoot();
 
     // Limpiar campos
@@ -95,17 +107,15 @@ function addLoot() {
     presetLoot.value = "";
 }
 
-------------------------------
+
 //  FUNCIÓN: RENDERIZAR BOTÍN
-------------------------------
 function renderLoot() {
-    lootList.innerHTML = "";
+    lootrows.innerHTML = "";
 
     let total = 0;
 
-    ----------------------------------------------
+
     // Bucle tradicional requerido
-    ----------------------------------------------
     for (let i = 0; i < lootArray.length; i++) {
         const item = lootArray[i];
 
