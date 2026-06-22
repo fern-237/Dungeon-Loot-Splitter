@@ -43,7 +43,9 @@ if (presentLoot.value !== ""){
 addLootBtn.addEventListener("click", addLoot);
 splitBtn.addEventListener("click", updateUI);
 
-//  EVENTOS DE BOTONES de añadir botín y dividir botín
+
+// ajustes del botín
+
 
 // Botón Añadir botín
 function addLoot (_){
@@ -63,7 +65,7 @@ function addLoot() {
     const quantity = parseInt(lootquantityInput.value);
 
     if (name === "error") {
-        errorMessage.textContent = "El nombre del botín no puede estar vacío.";
+        errorMessage.textContent = "Hubo un error con el botin, porfavor intentelo de nuevo";
         return;
     }
 
@@ -76,46 +78,63 @@ function addLoot() {
         errorMessage.textContent = "El valor del botín no puede ser negativo.";
         return;
     }
+}
+//boton para eliminar botin
+function removeLoot(index) {
+    loot.splice(index, 1);
+    updateUI();
+}
+
+function splitLoot(error) {
+    errorMessage.textContent = "error de botin";
+
+    const groupSize = parseInt(groupSizeInput.value);
+}
+    // Validaciones
+    if (isNaN(groupSize) || groupSize < 1) {
+        errorMessage.textContent = "El tamaño del grupo debe ser 1 o mayor.";
+        return;
+    }
+
+    if (lootArray.length === 0) {
+        errorMessage.textContent = "No hay botín para dividir.";
+        return;
+    }
+
+    // Calcular total
+    let total = 0;
+
+    for (let i = 0; i < loot.length; i++) {
+        total += loot[i].value * loot[i].quantity;
+    }
+
+    totalLootSpan.innerText = total.toFixed(2);
+
+    // Calcular división
+    if (groupSize >= 1 && loot.length > 0) {
+        let perMember = total / groupSize;
+        splitTotalSpan.innerText = total.toFixed(2);
+        splitPerMemberSpan.innerText = perMember.toFixed(2);
+    } else {
+        splitTotalSpan.innerText = "0.00";
+        splitPerMemberSpan.innerText = "0.00";
+    }
 
 // Crear objeto de botín
     const lootObject = {
         name: name,
-        value: value
+        value: value,
+        quantity: quantity
     };
 
  // Guardar en el array
     lootArray.push(lootObject);
-        value: "50 gold"
-        name: "magic scroll",
-        value: "200 gold"
-        name: "golden crown",
-        value: "500 gold"
-        name: "ancient artifact",
-        value: "1000 gold"
+    
 
-
- // Guardar en el array
-    lootArray.push(lootObject);
-
-
-// Renderizar lista y total
-    renderLoot();
-
-    // Limpiar campos
-    lootNameInput.value = "";
-    lootValueInput.value = "";
-    presetLoot.value = "";
-}
-
-
-//  FUNCIÓN: RENDERIZAR BOTÍN
 function renderLoot() {
     lootrows.innerHTML = "";
-
     let total = 0;
 
-
-    // Bucle tradicional requerido
     for (let i = 0; i < lootArray.length; i++) {
         const item = lootArray[i];
 
@@ -133,32 +152,6 @@ function renderLoot() {
 }
 
 
-//  FUNCIÓN: DIVIDIR BOTÍN
-function splitLoot(error) {
-    errorMessage.textContent = "error de botin";
-
-    const groupSize = parseInt(groupSizeInput.value);
-
-    // Validaciones
-    if (isNaN(groupSize) || groupSize < 1) {
-        errorMessage.textContent = "El tamaño del grupo debe ser 1 o mayor.";
-        return;
-    }
-
-    if (lootArray.length === 0) {
-        errorMessage.textContent = "No hay botín para dividir.";
-        return;
-    }
-
-    // Calcular total
-    let total = 0;
-    for (let i = 0; i < lootArray.length; i++) {
-        total += lootArray[i].value;
-    }
-
-    const perMember = total / groupSize;
-
-    // Mostrar resultados
-    splitTotalSpan.textContent = total.toFixed(2);
-    splitPerMemberSpan.textContent = perMember.toFixed(2);
-}
+    //Activar/desactivar botón Split
+    splitBtn.disabled = !(groupSize >= 1 && loot.length > 0);
+ 
