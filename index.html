@@ -6,10 +6,11 @@
     <title>Dungeon Loot Splitter</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
 <header>
-    <h1>Dungeon Loot Splitter</h1>
+    <h1>Dungeon Loot Splitter phase 3</h1>
 </header>
 
 <main>
@@ -21,7 +22,8 @@ Montaje de la fiesta
 - Es el usuario quien ingresa el número de miembros del grupo.
 - El programa de momento solo valida que el número sea un entero positivo.
 - Si el número es inválido, se muestra un mensaje de error y se solicita nuevamente.
-<section class="panel">
+
+ <section class="panel">
     <h2>Montaje de la fiesta</h2>
 
     <label for="groupSizeInput">Número de miembros del grupo</label>
@@ -30,40 +32,14 @@ Montaje de la fiesta
     <p id="errorMessage" class="error"></p>
 </section>
 
-    <!-- Añadir botín -->
-    <section class="panel">
-        <h2>Añadir botín</h2>
+<!-- Añadir botín -->
+ <section class="panel">
+<h2>Añadir botín</h2>
+
     <label for="presetLoot">Botín rápido:</label>
     <select id="presetLoot">
          <option value="">-- Selecciona botín --</option>
     
-    <!-- Bolsas de oro -->
-        <option value="Bolsa de oro pequeña|10">Small bag of gold</option>
-        <option value="Bolsa de oro mediana|25">Medium bag of gold</option>
-        <option value="Bolsa de oro grande|50">Large bag of gold</option>
-
-    <!-- Gemas pequeñas -->
-        <option value="Gema pequeña roja|15">Small red gem</option>
-        <option value="Gema pequeña azul|15">Small blue gem</option>
-        <option value="Gema pequeña verde|15">Small green gem</option>
-
-    <!-- Gemas medianas -->
-        <option value="Gema mediana roja|40">Medium red gem</option>
-        <option value="Gema mediana azul|40">Medium blue gem</option>
-        <option value="Gema mediana verde|40">Medium green gem</option>
-
-    <!-- Gemas grandes -->
-        <option value="Gema grande roja|100">Large red gem</option>
-        <option value="Gema grande azul|100">Large blue gem</option>
-        <option value="Gema grande verde|100">Large green gem</option>
-
-
-    <!-- Selector de botín predefinido -->
-        <label for="presetLoot">Botín rápido:</label>
-        <select id="presetLoot">
-
-        <option value="">-- Selecciona botín --</option>
-
     <!-- recompensas pequenas -->
         <option value="Bolsa de oro pequeña|10">Small bag of gold($10)</option>
         <option value="Gema pequeña roja|15">Small red gem($15)</option>
@@ -84,59 +60,54 @@ Montaje de la fiesta
 
         </select>
 
-        <p class="note"> (Selecciona un botín y llenarás automáticamente los campos de abajo)</p>
-            <p class="note"> (O ingresa un botín personalizado)</p>
+    <p class="note"> (Selecciona un botín y llenarás automáticamente los campos de abajo)</p>
     
-        <label for="lootNameInput">Nombre del botín:</label>
-        <input type="text" id="lootNameInput">
+    <label for="lootNameInput">Nombre del botín:</label>
+    <input type="text" id="lootNameInput">
 
-        <label for="lootValueInput">Valor de botín:</label>
-        <input type="number" id="lootValueInput" min="0" step="0.1">
+    <label for="lootValueInput">Valor de botín:</label>
+    <input type="number" id="lootValueInput" min="0" step="0.1">
 
-        <label for="lootQuantityInput">Cantidad de botín:</label>
-        <input type="number" id="lootQuantityInput" min="1" step="1" value="1">
+    <label for="lootQuantityInput">Cantidad de botín:</label>
+    <input type="number" id="lootQuantityInput" min="1" step="1" value="1">
 
-        <button id="addLootBtn">Añadir botín</button>
+    <button id="addLootBtn">Añadir botín</button>
     </section>
 
     <!-- Lista de botín -->
     <section class="panel">
      <h2>Lista de botín</h2>
      <div id="nolookmessage">no se ha agregado ningún botín</div>
-    
      <div class="loot-table">
      
-                    <div class="loot-header">Nombre del botín</div>
-                    <div class="loot-header">Valor</div>
-                    <div class="loot-header">Cantidad</div>
-                    <div class="loot-header">Total</div>
-                    <div class="loot-header">Eliminar</div>
+     <div class="loot-header">Name of Loot</div>
+     <div class="loot-header">Value</div>
+     <div class="loot-header">Quantity</div>
+     <div class="loot-header">Total</div>
+     <div class="loot-header">Remove</div>
 
-                    <div id="lootRows"></div>
-        </div>
-        <div class="total-row">
-        <p>Botín total: $<span id="lootTotal">0.00</span></p>
-    </div>
-    </section>
+     <div id="lootRows"></div>
+     </div>
+     <div class="total-row">
+     <p>Botín total: $<span id="lootTotal">0.00</span></p>
+     </div>
+     </section>
 
-    <!-- Botín dividido -->
+     <!-- Botín dividido -->
     <section class="panel">
         <h2>Botín dividido</h2>
 
         <button id="splitBtn">Dividir botín</button>
 
-        <p>Botín total: $<span id="splitTotal">0.00</span></p>
-        <p>Botín por miembro del grupo: $<span id="splitPerMember">0.00</span></p>
+        <p class="split-result">Botín total: $<span id="splitTotal">0.00</span></p>
+        <p class="split-result">Botín por miembro del grupo: $<span id="splitPerMember">0.00</span></p>
     </section>
 
     <!-- Explicación de la lógica -->
     <section class="panel reflection">
         <h2>Explicación de la lógica</h2>
 
-        <p>  
-            Uso un bucle para calcular el total y otro para renderizar la lista de botín
-             y evita errores como valores vacíos o negativos.
-        </p>
+        <p>prueva y error</p>
     </section>
 
 </main>
